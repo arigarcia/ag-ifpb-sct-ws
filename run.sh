@@ -6,6 +6,9 @@ case "$1" in
      echo "start packaging..."
      mvn clean package
   ;;
+  --none)
+     echo "start without packaging..."
+  ;;
   *)
      echo "none..."
   ;;

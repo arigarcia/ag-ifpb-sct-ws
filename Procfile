@@ -1,1 +1,1 @@
-web: sh run.sh package ag.ifpb.sct.ws.App
+web: sh run.sh --none ag.ifpb.sct.ws.site.App
