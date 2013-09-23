@@ -1,1 +1,1 @@
-web: java -cp ag-femmium-offers-site/target/classes:ag-femmium-offers-site/target/dependency/* ag.femmium.offers.App
+web: sh run.sh
