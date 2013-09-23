@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Request Head Configuration -->
+    <meta http-equiv="Accept-Encoding" content="gzip, deflate" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Enable Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google -->
+    <meta name="title" content="<<Site Name>>" />
+    <meta name="description" content="<<Site Description>>">
+    <meta name="keywords" content="<<, site, keywords,>>"> 
+    <meta name="author" content="arigarcia">
+    <meta name="google-site-verification" content="<<google-site-verification>>" />
+    <!-- OGFacebook  -->
+    <meta property="og:title" content="<<Site Name>>" />
+    <meta property="og:type" content="blog" />
+    <meta property="og:url" content="<<Url>>" />
+    <meta property="og:image" content="<<Url Image>>" />
+    <meta property="og:description" content="<<Site Description>>" />
+    <!--  Title -->
+    <title>Site Name</title>
+    <!-- Font -->
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-united.min.css">
+    <!-- Less -->
+    <link rel="stylesheet/less" type="text/css" href="assets/css/style.less?v=0">
+    <!-- Scripts -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/less-1.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/ejs.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/apps.js?v=0"></script>
+  </head>
+  <body>
+    <section id="dynamicContent" class="row-fluid">
+      <#include "${page + extension}">
+        <ul>
+          <li><a href="/">Home Page</a></li>
+          <li><a href="/error">Test Error Page</a></li>
+          <li><a href="/googlebcdaf70bc23419db.html">Google Key Page</a></li>
+        </ul>
+    </section>
+    <!-- Scripts -->
+    <script type="text/javascript">
+      function scrollToCustom(tf, fbscroll){
+          jQuery("html, body").animate({scrollTop: tf},'slow')
+          fbscroll(tf);
+      }
+    </script>
+    <!-- Facebook SDK: Load the SDK Asynchronously -->
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+      //
+      window.loaded = false;
+      window.objectScrollTo = null;
+      window.objectLogin = null;
+      window.objectInvite = null;
+      window.objectListComments = null;
+      //
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: '583601048325930',
+          cookie: true, 
+          status: true,
+          xfbml: true
+        });
+        //
+        FB.Canvas.setAutoGrow();
+        FB.Canvas.scrollTo(0,0);
+        //
+        window.objectListComments = function(postId, callback){
+          FB.api(postId + "/comments", 'get', function(response) {
+            if (!response || response.error) {
+              messageBox.showError(response.error.message)
+            } 
+            else {
+              callback(response)
+            }
+          });
+        }
+        //
+        window.objectInvite = function(friendId, callback){
+          var obj = {
+            method: 'feed',
+            to: friendId,
+            link: 'https://www.facebook.com/Femmium/app_583601048325930',
+            picture: '${url}/assets/img/advertise.png',
+            name: 'Compartilhando para Conquistar',
+            caption: 'Promoção Especial',
+            description: 'Mais de R$ 20.000,00 em prêmios. Isto sim é uma promoção de verdade!! Vem participar!'
+          }
+          FB.ui(obj, callback);
+        }
+        //
+        window.objectScrollTo = function (tf) {
+          if (window.jQuery) {
+            FB.Canvas.getPageInfo(function(pageInfo){
+              var t0 = pageInfo.scrollTop;
+              jQuery({ y:  t0}).animate({y: tf},{
+                duration: 'slow',
+                step: function (offset) {
+                  FB.Canvas.scrollTo(0, offset + 30);
+                }
+              });
+            });
+          }
+          else {
+            FB.Canvas.scrollTo(0, y);
+          }
+        };
+        //
+        window.objectLogin = function(){
+          FB.login()
+        }
+        //
+        window.loaded = true
+      };
+      (function(d){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         ref.parentNode.insertBefore(js, ref);
+      }(document));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+<section id="login-section" class="row">
+  <h1 class="span1">Error</h1>
+  <h3>${data}</h3>
+</section>
