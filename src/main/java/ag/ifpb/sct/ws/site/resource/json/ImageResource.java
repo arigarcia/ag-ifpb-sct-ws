@@ -44,6 +44,10 @@ public class ImageResource extends ServerResource {
 			File repository = new File("/tmp");
 			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory(5000, repository);
 			RestletFileUpload upload = new RestletFileUpload(fileItemFactory);
+			//
+			System.out.println("size: " + representation.getSize());
+			System.out.println("size: " + representation.getMediaType());
+			//
 			List<FileItem> list = upload.parseRepresentation(representation);
 			//
 			int listsize = list.size();
