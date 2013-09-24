@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.net.URLConnection;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -12,6 +11,8 @@ import java.util.List;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.restlet.ext.fileupload.RestletFileUpload;
 import org.restlet.ext.json.JsonRepresentation;
 import org.restlet.representation.StreamRepresentation;
@@ -38,18 +39,19 @@ public class ImageResource extends ServerResource {
 		JSONResult result = new JSONResult();
 		//
 		try {
-			File repository = new File("temp");
+			File repository = new File("/tmp");
 			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory(5000, repository);
 			RestletFileUpload upload = new RestletFileUpload(fileItemFactory);
 			List<FileItem> list = upload.parseRepresentation(representation);
 			//
 			int listsize = list.size();
+			JSONArray a = new JSONArray();
 			for (int i = 0; i < listsize; i++){
 				FileItem fi = list.get(i);
 				String name = calculateName(fi.get());
 				//
-				File file = new File("temp/" + name + ".png");
-				System.out.println(file.getAbsolutePath());
+				File file = new File("/tmp/" + name + ".png");
+				a.put(i, file.getAbsoluteFile());
 				//
 				FileOutputStream fileOutputStream = new FileOutputStream(file);
 				fileOutputStream.write(fi.get());
@@ -59,7 +61,7 @@ public class ImageResource extends ServerResource {
 			//
 			result.setSuccess(true);
 		}
-		catch (IOException | FileUploadException e) {
+		catch (IOException | FileUploadException | JSONException e) {
 			result.setSuccess(false);
 			result.setMessage(e.getMessage());
 			e.printStackTrace();
