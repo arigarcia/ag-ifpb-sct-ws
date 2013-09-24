@@ -47,7 +47,11 @@ public class ImageResource extends ServerResource {
 			for (int i = 0; i < listsize; i++){
 				FileItem fi = list.get(i);
 				String name = calculateName(fi.get());
-				FileOutputStream fileOutputStream = new FileOutputStream("temp/" + name + ".png");
+				//
+				File file = new File("temp/" + name + ".png");
+				System.out.println(file.getAbsolutePath());
+				//
+				FileOutputStream fileOutputStream = new FileOutputStream(file);
 				fileOutputStream.write(fi.get());
 				fileOutputStream.flush();
 				fileOutputStream.close();
