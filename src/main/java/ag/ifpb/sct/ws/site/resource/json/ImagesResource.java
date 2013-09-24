@@ -24,6 +24,7 @@ public class ImagesResource extends ServerResource {
 	    a.put(image.getName());
     }
 		//
+		result.setData(a);
 		result.setSuccess(true);
 		result.setMessage("Listagem realizada com sucesso.");
 		return new JsonRepresentation(result.asJSON());
