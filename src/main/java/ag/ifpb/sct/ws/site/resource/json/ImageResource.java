@@ -59,6 +59,7 @@ public class ImageResource extends ServerResource {
 				fileOutputStream.close();
 			}
 			//
+			result.setData(a);
 			result.setSuccess(true);
 		}
 		catch (IOException | FileUploadException | JSONException e) {
