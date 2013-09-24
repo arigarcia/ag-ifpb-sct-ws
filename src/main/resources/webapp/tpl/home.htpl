@@ -1,3 +1,7 @@
 <section id="homeSection" class="newSection">
   <h1>Hello World</h1>
-</script>
+  <form class="form" action="/ws/image" enctype="multipart/form-data" method="post">
+    <input name="arquivo" type="file" />
+    <button type="submit">Enviar</button>
+  </form>
+</section>

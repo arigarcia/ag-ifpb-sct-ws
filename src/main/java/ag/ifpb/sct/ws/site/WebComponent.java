@@ -9,6 +9,7 @@ import ag.ifpb.sct.ws.site.application.ErrorApplication;
 import ag.ifpb.sct.ws.site.application.GoogleApplication;
 import ag.ifpb.sct.ws.site.application.RedirectApplication;
 import ag.ifpb.sct.ws.site.application.SiteApplication;
+import ag.ifpb.sct.ws.site.application.WebServiceApplication;
 
 
 public class WebComponent extends Component {
@@ -25,6 +26,8 @@ public class WebComponent extends Component {
     host.attach("/", new RedirectApplication());
     // for site
     host.attach("/site", new SiteApplication());
+    // for site
+    host.attach("/ws", new WebServiceApplication());
     // for google
     host.attach("/googlebcdaf70bc23419db.html", new GoogleApplication(), Template.MODE_EQUALS);
     // for site
