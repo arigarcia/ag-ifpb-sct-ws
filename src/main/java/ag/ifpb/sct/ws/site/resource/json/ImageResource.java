@@ -1,8 +1,6 @@
 package ag.ifpb.sct.ws.site.resource.json;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,7 +17,11 @@ import org.restlet.representation.StreamRepresentation;
 import org.restlet.resource.Post;
 import org.restlet.resource.ServerResource;
 
+import ag.ifpb.sct.ws.model.Image;
+import ag.ifpb.sct.ws.model.ImageRepository;
+
 public class ImageResource extends ServerResource {
+	private final ImageRepository imageRepository = new ImageRepository();
 	
 	private String calculateName(byte[] bytefile){
 		try{
@@ -48,21 +50,18 @@ public class ImageResource extends ServerResource {
 			JSONArray a = new JSONArray();
 			for (int i = 0; i < listsize; i++){
 				FileItem fi = list.get(i);
-				String name = calculateName(fi.get());
+				String name = calculateName(fi.get()) + ".png";
 				//
-				File file = new File("/tmp/" + name + ".png");
-				a.put(i, file.getAbsoluteFile());
+				a.put(i, name);
 				//
-				FileOutputStream fileOutputStream = new FileOutputStream(file);
-				fileOutputStream.write(fi.get());
-				fileOutputStream.flush();
-				fileOutputStream.close();
+				Image image = new Image(name, fi.get());
+				imageRepository.store(image);
 			}
 			//
 			result.setData(a);
 			result.setSuccess(true);
 		}
-		catch (IOException | FileUploadException | JSONException e) {
+		catch (FileUploadException | JSONException e) {
 			result.setSuccess(false);
 			result.setMessage(e.getMessage());
 			e.printStackTrace();
