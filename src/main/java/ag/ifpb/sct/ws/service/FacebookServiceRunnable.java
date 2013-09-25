@@ -40,7 +40,7 @@ public class FacebookServiceRunnable implements Runnable {
 			System.out.println("PostId: " + postId);
 		}
 		catch (FacebookRequestException e) {
-			e.printStackTrace();
+			System.out.println(e.getErrorJson());
 		}
 	}
 
