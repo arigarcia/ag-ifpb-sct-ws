@@ -12,11 +12,12 @@ import ag.facebook.graph.object.PostId;
 import ag.ifpb.sct.ws.model.Image;
 
 public class FacebookServiceRunnable implements Runnable {
-	private final String TOKEN = "CAACEdEose0cBALv1ae2evnNQkPqb" +
-			"zHX9nw55SYLc7aKRIDQLAbBoCtxDPkIPZBVASyMLI698dQ3V5gXgr8TK4zcs0ZA6qxOE" +
-			"IaFy2iZBFnMHM8ubnC5pCwZB8kBYBbocA09NpWZBPiOh1vaufEZClUUGXZCFV0XK2w2z" +
-			"uevi7JrjwfLR0uGA97Yw0tB8vxkdywZD";
 	private final Image image;
+	private final String TOKEN = "CAACEdEose0cBAKDocHyC" +
+			"4C0WFaUgPSIwKag1zn2O9YXhhQFBLqCF3LxLBI9oR2nBf1KK6" +
+			"nxwrT7oKd4t92SOROJUtoUNADZAA7p0VZAhKURHmnBZArzebeTQCh" +
+			"LiZCBycGZAVaUtK1JKLwBUkxO6BZAnV8Kui0tOqZCH0ennRGacY5t" +
+			"7cAzgGKc81YboaZAKkN02PpWh2iK0oAZDZD";
 	
 	public FacebookServiceRunnable(Image image) {
 	  this.image = image;
