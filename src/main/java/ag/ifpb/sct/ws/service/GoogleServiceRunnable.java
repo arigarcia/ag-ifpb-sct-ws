@@ -12,7 +12,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.services.drive.model.File;
 
 public class GoogleServiceRunnable implements Runnable {
-	private final static String TOKEN = "ya29.AHES6ZQhCPxhKIquZX26W8qiIKOdeS9ZKDPGZRIOyyMSbrr7_-xFEg";
+	private final static String TOKEN = "ya29.AHES6ZQx9jY3jwDrZiw4IGRMZZHVb14Gdvl6ivFRI43Pg8OvMs7z2f8";
 	private final DriveService service;
 	private final Image image;
 	
@@ -42,7 +42,9 @@ public class GoogleServiceRunnable implements Runnable {
 	    System.out.println("File: " + f.getId());
     } 
     catch (DriveServiceException e) {
-	    e.printStackTrace();
+	    if (e.getMessage().contains("401")){
+	    	
+	    }
     }
 	}
 
