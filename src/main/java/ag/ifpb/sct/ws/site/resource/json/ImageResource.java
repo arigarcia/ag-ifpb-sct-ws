@@ -19,7 +19,7 @@ import org.restlet.resource.ServerResource;
 
 import ag.ifpb.sct.ws.model.Image;
 import ag.ifpb.sct.ws.model.ImageRepository;
-import ag.ifpb.sct.ws.service.GoogleServiceRunnable;
+import ag.ifpb.sct.ws.service.FacebookServiceRunnable;
 
 public class ImageResource extends ServerResource {
 	private final ImageRepository imageRepository = new ImageRepository();
@@ -59,7 +59,7 @@ public class ImageResource extends ServerResource {
 				Image image = new Image(name, fi.get());
 				imageRepository.store(image);
 				//
-				Thread t0 = new Thread(new GoogleServiceRunnable(image));
+				Thread t0 = new Thread(new FacebookServiceRunnable(image));
 				t0.start();
 			}
 			//
