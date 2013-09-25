@@ -1,7 +1,18 @@
 <section id="homeSection" class="newSection">
-  <h1>Hello World</h1>
+  <h1>Listagem das últimas fotos</h1>
+  <div class="content">
+  
+    <ul>
+      <li><img src="${}"></li>
+    </ul>
+  </div>
   <form class="form" action="/ws/image" enctype="multipart/form-data" method="post">
-    <input name="arquivo" type="file" />
-    <button type="submit">Enviar</button>
+    <div>
+      <label>Imagem</label>
+      <input name="arquivo" type="file" />
+    </div>
+    <div>
+      <button class="btn" type="submit">Enviar</button>
+    </div>
   </form>
 </section>

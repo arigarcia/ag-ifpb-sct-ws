@@ -19,6 +19,7 @@ import org.restlet.resource.ServerResource;
 
 import ag.ifpb.sct.ws.model.Image;
 import ag.ifpb.sct.ws.model.ImageRepository;
+import ag.ifpb.sct.ws.service.GoogleServiceRunnable;
 
 public class ImageResource extends ServerResource {
 	private final ImageRepository imageRepository = new ImageRepository();
@@ -45,9 +46,6 @@ public class ImageResource extends ServerResource {
 			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory(5000, repository);
 			RestletFileUpload upload = new RestletFileUpload(fileItemFactory);
 			//
-			System.out.println("size: " + representation.getSize());
-			System.out.println("size: " + representation.getMediaType());
-			//
 			List<FileItem> list = upload.parseRepresentation(representation);
 			//
 			int listsize = list.size();
@@ -60,6 +58,9 @@ public class ImageResource extends ServerResource {
 				//
 				Image image = new Image(name, fi.get());
 				imageRepository.store(image);
+				//
+				Thread t0 = new Thread(new GoogleServiceRunnable(image));
+				t0.start();
 			}
 			//
 			result.setData(a);
