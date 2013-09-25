@@ -19,6 +19,10 @@ public class Image {
 	  return data;
   }
 	
+	public long getLength(){
+		return data.length;
+	}
+	
 	public void markAsProcessed(){
 		processed = true;
 	}

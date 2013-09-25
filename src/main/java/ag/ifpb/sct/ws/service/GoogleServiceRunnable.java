@@ -30,7 +30,7 @@ public class GoogleServiceRunnable implements Runnable {
 		//
 		ByteArrayInputStream bais = new ByteArrayInputStream(image.getData());
 		//
-		DriveFileMetadata metadata = new DriveFileMetadata(bais, 0);
+		DriveFileMetadata metadata = new DriveFileMetadata(bais, image.getLength());
 		metadata.setTitle(image.getName());
 		metadata.setDescription("File uploaded by AG IFPB SCT - " + image.getName());
 		metadata.setMimeType("image/jpg");
