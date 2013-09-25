@@ -98,6 +98,13 @@
       <systemPath>${basedir}/lib/ag-googledrive-0.0.1-SNAPSHOT.jar</systemPath>
     </dependency>
     <dependency>
+      <groupId>ag.facebook</groupId>
+      <artifactId>ag-facebook</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib/ag-facebook-0.0.1-SNAPSHOT.jar</systemPath>
+    </dependency>
+    <dependency>
       <groupId>com.google.apis</groupId>
       <artifactId>google-api-services-drive</artifactId>
       <version>v2-rev99-1.17.0-rc</version>
